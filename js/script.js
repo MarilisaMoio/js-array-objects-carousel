@@ -27,12 +27,23 @@ const images = [
     }
 ];
 
+//popola dinamicamente la thumbnail
+images.forEach((game) => {
+    let thumbnailContainer = document.querySelector("#thumbnail")
+    let newImgInThumbnail = document.createElement("img")
+    newImgInThumbnail.setAttribute("src", `${game.image}`)
+    thumbnailContainer.append(newImgInThumbnail);
+});
+
 //counter per identificare di volta in volta la coppia di elementi da rendere attivi
 let counter = 0
 
+//strutturazione del punto di partenza
 let activeImage = images[counter];
 createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
+whatsTheActiveImg()
 
+//eventi al click
 arrowUp.addEventListener("click", function(){
     previousImg();
 
@@ -58,7 +69,7 @@ function createImgTemplate(path, game, paragr){
     console.log(imgShownContainer)
 
     imgShownContainer.innerHTML = `
-    <img src="${path}" alt="">
+    <img src="${path}" alt="${game.toLowerCase()}">
     <div id="description">
         <h3>${game}</h3>
         <p>${paragr}</p>
@@ -91,10 +102,13 @@ function nextImg(){
 //funzione per definire qual'è l'immagine visualizzata nella thumbnail e attribuire la classe, rimuovendola all'immagine precedente
 function whatsTheActiveImg(){
     const allImgs = document.querySelectorAll("#thumbnail>img")
+
     const nowActive = document.querySelector(".active");
-
-
-    nowActive.classList.remove("active");
+    
+    //condizione per farla funzionare anche al primo richiamo
+    if(nowActive){
+        nowActive.classList.remove("active");
+    }
 
     allImgs[counter].classList.add("active");
 }
