@@ -1,6 +1,7 @@
 //get the buttons
 const arrowUp = document.querySelector("#arrow-up");
 const arrowDown = document.querySelector("#arrow-down");
+const autoplayBtn = document.querySelector("button")
 
 //starting aray
 const images = [
@@ -62,17 +63,6 @@ arrowDown.addEventListener("click", function(){
 
     let activeImage = images[counter];
     createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
-})
-
-
-allImgs.forEach((img, index) => {
-    img.addEventListener("click", function(){
-        counter = index
-        whatsTheActiveImg();
-
-        activeImage = images[counter];
-        createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
-    })
 })
 
 //funzione per generare l'elemento che mostra l'immagine attiva e la relativa descrizione
