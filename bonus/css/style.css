@@ -21,9 +21,18 @@ ul, ol {
     display: flex;
 }
 
-#autoplay{
+#autoplay-backward{
     position: absolute;
     top: -20px;
+    right: 1vw;
+    z-index: 999;
+    width: 11vw;
+    border: 1px solid darkgray;
+}
+
+#autoplay-foward{
+    position: absolute;
+    bottom: -20px;
     right: 1vw;
     z-index: 999;
     width: 10vw;

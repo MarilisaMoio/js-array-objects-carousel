@@ -1,7 +1,8 @@
 //get the buttons
 const arrowUp = document.querySelector("#arrow-up");
 const arrowDown = document.querySelector("#arrow-down");
-const autoplayBtn = document.querySelector("#autoplay")
+const fowardBtn = document.querySelector("#autoplay-foward")
+const backwardBtn = document.querySelector("#autoplay-backward")
 
 //starting aray
 const images = [
@@ -76,16 +77,43 @@ allImgs.forEach((img, index) => {
     })
 })
 
-autoplayBtn.addEventListener("click", function(){
-    setInterval(function(){
-        nextImg();
+fowardBtn.addEventListener("click", function(){
+    if(typeof backwardInterval !== 'undefined'){
+        clearInterval(backwardInterval)
+    }
+    if(typeof fowardInterval !== 'undefined'){
+        clearInterval(fowardInterval)
+    } 
 
+    fowardInterval = setInterval(function(){
+        nextImg();
+        console.log("io sono foward!" + counter)
         whatsTheActiveImg();
 
         let activeImage = images[counter];
         createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
     }, 3000)
 })
+
+backwardBtn.addEventListener("click", function(){
+    if(typeof fowardInterval !== 'undefined'){
+        clearInterval(fowardInterval)
+    } 
+    if(typeof backwardInterval !== 'undefined'){
+        clearInterval(backwardInterval)
+    }
+
+    backwardInterval = setInterval(function(){
+        previousImg();
+        console.log("io sono backward!" + counter)
+        whatsTheActiveImg();
+
+        let activeImage = images[counter];
+        createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
+    }, 3000)
+})
+
+
 
 //funzione per generare l'elemento che mostra l'immagine attiva e la relativa descrizione
 function createImgTemplate(path, game, paragr){
