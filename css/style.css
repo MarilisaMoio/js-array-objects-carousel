@@ -40,6 +40,12 @@ ul, ol {
     right: 6px;
     width: 75%;
     color: rgba(255, 255, 255, 0.805);
+    & h3{
+        font-size: 4vw;
+    }
+    & p{
+        font-size: 2vw;
+    }
 }
 
 /* thumbnail */

@@ -27,12 +27,17 @@ const images = [
     }
 ];
 
+//counter per identificare di volta in volta la coppia di elementi da rendere attivi
 let counter = 0
+
+arrowUp.addEventListener("click", previousImg)
+
+arrowDown.addEventListener("click", nextImg)
 
 let activeImage = images[counter];
 createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
 
-
+//funzione per generare l'elemento che mostra l'immagine attiva e la relativa descrizione
 function createImgTemplate(path, game, paragr){
     const imgShownContainer = document.querySelector("#shown-img");
     console.log(imgShownContainer)
@@ -45,4 +50,25 @@ function createImgTemplate(path, game, paragr){
     </div>
     `
     console.log(imgShownContainer)
+}
+
+//funzioni per far scorrere il counter
+function previousImg(){
+    console.log(counter)
+    if (counter > 0){
+    counter--
+    } else {
+        counter = images.length
+    }
+    console.log(counter)
+}
+
+function nextImg(){
+    console.log(counter)
+    if (counter < images.length){
+    counter++
+    } else {
+        counter = 0
+    }
+    console.log(counter)
 }
