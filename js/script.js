@@ -30,20 +30,27 @@ const images = [
 //counter per identificare di volta in volta la coppia di elementi da rendere attivi
 let counter = 0
 
+let activeImage = images[counter];
+createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
+
 arrowUp.addEventListener("click", function(){
     previousImg();
 
     whatsTheActiveImg();
+
+    let activeImage = images[counter];
+    createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
 })
 
 arrowDown.addEventListener("click", function(){
     nextImg();
 
     whatsTheActiveImg();
+
+    let activeImage = images[counter];
+    createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
 })
 
-let activeImage = images[counter];
-createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
 
 //funzione per generare l'elemento che mostra l'immagine attiva e la relativa descrizione
 function createImgTemplate(path, game, paragr){
