@@ -30,9 +30,17 @@ const images = [
 //counter per identificare di volta in volta la coppia di elementi da rendere attivi
 let counter = 0
 
-arrowUp.addEventListener("click", previousImg)
+arrowUp.addEventListener("click", function(){
+    previousImg();
 
-arrowDown.addEventListener("click", nextImg)
+    whatsTheActiveImg();
+})
+
+arrowDown.addEventListener("click", function(){
+    nextImg();
+
+    whatsTheActiveImg();
+})
 
 let activeImage = images[counter];
 createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
@@ -58,17 +66,28 @@ function previousImg(){
     if (counter > 0){
     counter--
     } else {
-        counter = images.length
+        counter = images.length - 1;
     }
     console.log(counter)
 }
 
 function nextImg(){
     console.log(counter)
-    if (counter < images.length){
+    if (counter < images.length - 1){
     counter++
     } else {
         counter = 0
     }
     console.log(counter)
+}
+
+//funzione per definire qual'è l'immagine visualizzata nella thumbnail e attribuire la classe, rimuovendola all'immagine precedente
+function whatsTheActiveImg(){
+    const allImgs = document.querySelectorAll("#thumbnail>img")
+    const nowActive = document.querySelector(".active");
+
+
+    nowActive.classList.remove("active");
+
+    allImgs[counter].classList.add("active");
 }
