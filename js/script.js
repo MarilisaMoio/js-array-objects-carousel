@@ -1,3 +1,8 @@
+//get the buttons
+const arrowUp = document.querySelector("#arrow-up");
+const arrowDown = document.querySelector("#arrow-down");
+
+//starting aray
 const images = [
     {
         image: 'img/01.webp',
@@ -21,3 +26,23 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+let counter = 0
+
+let activeImage = images[counter];
+createImgTemplate(activeImage.image, activeImage.title, activeImage.text)
+
+
+function createImgTemplate(path, game, paragr){
+    const imgShownContainer = document.querySelector("#shown-img");
+    console.log(imgShownContainer)
+
+    imgShownContainer.innerHTML = `
+    <img src="${path}" alt="">
+    <div id="description">
+        <h3>${game}</h3>
+        <p>${paragr}</p>
+    </div>
+    `
+    console.log(imgShownContainer)
+}

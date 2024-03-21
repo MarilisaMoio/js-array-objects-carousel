@@ -62,17 +62,17 @@ ul, ol {
 }
 
 /* arrows */
-#arrowUp, #arrowDown{
+#arrow-up, #arrow-down{
     color: white;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
-#arrowUp{
+#arrow-up{
     top: 5px;
 }
 
-#arrowDown{
+#arrow-down{
     bottom: 5px;
 }
